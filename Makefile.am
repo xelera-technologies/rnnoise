@@ -32,11 +32,14 @@ librnnoise_la_LDFLAGS = -no-undefined \
  -version-info @OP_LT_CURRENT@:@OP_LT_REVISION@:@OP_LT_AGE@
 
 if OP_ENABLE_EXAMPLES
-noinst_PROGRAMS = examples/rnnoise_demo
+noinst_PROGRAMS = examples/rnnoise_demo examples/rnnoise_resample_demo
 endif
 
 examples_rnnoise_demo_SOURCES = examples/rnnoise_demo.c
 examples_rnnoise_demo_LDADD = librnnoise.la
+
+examples_rnnoise_resample_demo_SOURCES = examples/rnnoise_resample_demo.c examples/libsamplerate/samplerate.c examples/libsamplerate/src_zoh.c examples/libsamplerate/src_linear.c examples/libsamplerate/src_sinc.c
+examples_rnnoise_resample_demo_LDADD = librnnoise.la
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = rnnoise.pc
